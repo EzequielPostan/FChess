@@ -1,0 +1,1256 @@
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\date{}
+\end_preamble
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 1.5cm
+\topmargin 2cm
+\rightmargin 1.5cm
+\bottommargin 1.5cm
+\headheight 1cm
+\headsep 1cm
+\footskip 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Proyecto Final de ALPII
+\end_layout
+
+\begin_layout Author
+Ezequiel Postan
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introducción
+\end_layout
+
+\begin_layout Standard
+Este es el informe del proyecto final de ALPII 
+\series bold
+FChess
+\series default
+ (
+\series bold
+F
+\series default
+unctional
+\series bold
+Chess
+\series default
+).
+ El informe consta en: 
+\end_layout
+
+\begin_layout Itemize
+Descripción del programa entregado
+\end_layout
+
+\begin_layout Itemize
+Aspectos de diseño
+\end_layout
+
+\begin_layout Itemize
+Algoritmos
+\end_layout
+
+\begin_layout Itemize
+Estructura del código
+\end_layout
+
+\begin_layout Itemize
+Descripción general del código 
+\end_layout
+
+\begin_layout Itemize
+Relfexiones 
+\end_layout
+
+\begin_layout Itemize
+Instrucciones de Compilación
+\end_layout
+
+\begin_layout Section
+Descripción 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+FChass
+\series default
+ es un programa de consola que permite al usuario jugar un juego de ajedrez
+ contra la máquina.
+ 
+\end_layout
+
+\begin_layout Standard
+El juego cumple con todas las reglas de movimientos del juego de ajedrez
+ exceptuando la captura 
+\begin_inset Quotes eld
+\end_inset
+
+
+\shape italic
+en passant
+\shape default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Las jugadas se introducen por medio del teclado.
+ 
+\end_layout
+
+\begin_layout Standard
+Cada casilla tiene asignada una fila y una columna.
+ Por ejemplo, avanzar el peón rey blanco dos casillas desde su posición
+ inicial se denota 
+\begin_inset Quotes eld
+\end_inset
+
+e2e4
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Para coronación se escribe al final de la jugada una letra extra (
+\begin_inset Quotes eld
+\end_inset
+
+d
+\begin_inset Quotes erd
+\end_inset
+
+ para dama, 
+\begin_inset Quotes eld
+\end_inset
+
+t
+\begin_inset Quotes erd
+\end_inset
+
+ para torre, 
+\begin_inset Quotes eld
+\end_inset
+
+a
+\begin_inset Quotes erd
+\end_inset
+
+ para alfil y 
+\begin_inset Quotes eld
+\end_inset
+
+c
+\begin_inset Quotes erd
+\end_inset
+
+ para caballo), por ejemplo 
+\begin_inset Quotes eld
+\end_inset
+
+a7a8d
+\begin_inset Quotes erd
+\end_inset
+
+ corona el peón de la columna 
+\begin_inset Quotes eld
+\end_inset
+
+A
+\begin_inset Quotes erd
+\end_inset
+
+ por una dama.
+\end_layout
+
+\begin_layout Standard
+El enroque se denota moviendo el rey a su posición final.
+ Por ejemplo 
+\begin_inset Quotes eld
+\end_inset
+
+e1g1
+\begin_inset Quotes erd
+\end_inset
+
+ para el enroque corto de blancas.
+\end_layout
+
+\begin_layout Standard
+El programa ignorará toda entrada no válida.
+ Para ingresar la entrada se escribe la jugada como se explicó anteriormente
+ y se oprime 
+\begin_inset Quotes eld
+\end_inset
+
+Enter
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La idea del proyecto surgió del interés de sobre el área de Inteligencia
+ Artificial, originalmente pensé en implementar un juego d adversario más
+ pequeño como el Ta-Te-Ti.
+ Por cuestiones de tamaño el programa se extendió a un juego más extenso,
+ ajedrez.
+\end_layout
+
+\begin_layout Standard
+El programa entero fue diseñado desde cero.
+ No hubo un programa modelo por diversos motivos.
+ En primer lugar, la mayor parte de los juegos similares estaban escritos
+ en otros lenguajes.
+ Los dos programas que sí estaban en Haskell eran o incompletos (como el
+ programa hsChess) o tenían implementaciones demasiado avanzadas (como Lambda
+ Chess, implementaba una interfaz gráfica própia), ambos se encuentran en:
+ 
+\end_layout
+
+\begin_layout Standard
+http://www.haskell.org/haskellwiki/Applications_and_libraries/Games
+\end_layout
+
+\begin_layout Standard
+para su libre descarga.
+ 
+\end_layout
+
+\begin_layout Standard
+Preferí diseñarlo completamente en lugar de usar el tiempo entendiendo otro
+ programa existente.
+ Si bien podría haber encontrado ideas para solucionar algunos problemas
+ que tuve durante la implementación, fue motivador pensarlo por mi cuenta.
+ Afortunadamente los resultados fueron aceptables.
+\end_layout
+
+\begin_layout Section
+Aspectos de diseño
+\end_layout
+
+\begin_layout Standard
+El diseño presenta dos problemas fundamentales en cuanto a estructuras.
+ 
+\end_layout
+
+\begin_layout Standard
+El primero es la estructura del tablero.
+ El tablero es el corazón del programa como estructura.
+ Debe ser de rápida actualización y lectura.
+ Originalmente pensé en realizar una lista de listas de casillas (una intiutiva
+ matriz).
+ Sin embargo tras escribir algunas funciones que trabajaban sobre el tablero
+ decidí que no era una buena estructura.
+ Opté entonces por usar una lista de casillas, esta representación me pareció
+ mucho más cómoda.
+ Acceder a una casilla era simplemente indexar un elemento de la lista.
+ 
+\end_layout
+
+\begin_layout Standard
+El segundo desafío era el entorno.
+ Hay datos que deben llevarse a lo largo de la partida, el turno del jugador
+ que mueve, la posición actual, algunos datos sobre las reglas del enroque.
+ Opté por usar una tupla para estos datos.
+ 
+\end_layout
+
+\begin_layout Standard
+Las estructuras solucionaron los problemas que se planteaban, pero creo
+ que hoy lo haría distinto.
+ (Ver sección 7 del informe)
+\end_layout
+
+\begin_layout Section
+Algoritmos 
+\end_layout
+
+\begin_layout Standard
+El algoritmo fundamental del juego es conocido MiniMax.
+ La descripción a grandes rasgos del mismo fue tomda del paper 
+\series bold
+Why Functional Programming Matters
+\series default
+ [John Hughes].
+\end_layout
+
+\begin_layout Section
+Estructura del código
+\end_layout
+
+\begin_layout Standard
+El código se ha separado en diversos módulos según su funcionalidad.
+ Entre estos se encuentran:
+\end_layout
+
+\begin_layout Description
+Main: Contiene la estructura central que modela el comportamiento del programa
+\end_layout
+
+\begin_layout Description
+Estructuras: Definiciones de todos los tipos de datos usados a lo largo
+ del código y algunas funciones vinculadas a estos
+\end_layout
+
+\begin_layout Description
+Movimientos: Funciones de manipulación del tablero y entorno
+\end_layout
+
+\begin_layout Description
+Validacion: Conjunto de funciones que prmiten establecer si una jugada ingresada
+ por el usuario es válida
+\end_layout
+
+\begin_layout Description
+Maquina: Funciones que generan los movimientos de la computadora
+\end_layout
+
+\begin_layout Description
+Parser: Parser de entrada 
+\end_layout
+
+\begin_layout Section
+Descripción general del código 
+\end_layout
+
+\begin_layout Standard
+Esta sección describe las funciones de cada módulo.
+\end_layout
+
+\begin_layout Subsection
+Estructuras
+\end_layout
+
+\begin_layout Standard
+Se definen los tipos de datos usados.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="11" columns="2">
+<features>
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Declaración
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Descripción
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+data Color = White | Black | Grey
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Indica si una casilla contiene una pieza blanca, 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+negra o está vacía
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+data Square = Empty |WP |WN |WB |WR |WQ |WK 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Representa las casillas del tablero.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+|BP |BN |BB |BR |BQ |BK 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+type Board = [Square] 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Representa el tablero
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+type Pos = Int 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Representa una posición en el tablero
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+type Move = (Pos,Pos,Square) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Representa un movimiento
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+type Env = (Color , Board , Int , Int) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Información durante el juego, turno, posición, 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+estado de enroque
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+data GenTree a = Gen a [GenTree a] 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Para generar un árbol de jugadas
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+También se definen:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+prettyBoard :: Color -> Env -> String
+\series default
+ Se encarga de convertir el tablero en una cadena para mostrar al jugador
+ tras realizar cada movimiento.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+initPos :: Board: 
+\series default
+El tablero en su posición inicial
+\end_layout
+
+\begin_layout LyX-Code
+initPos = [WR , WN , WB , WQ , WK , WB , WN , WR,
+\end_layout
+
+\begin_layout LyX-Code
+           WP , WP , WP , WP , WP , WP , WP , WP,
+\end_layout
+
+\begin_layout LyX-Code
+           Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty,
+\end_layout
+
+\begin_layout LyX-Code
+           Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty,
+\end_layout
+
+\begin_layout LyX-Code
+           Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty,
+\end_layout
+
+\begin_layout LyX-Code
+           Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty,
+\end_layout
+
+\begin_layout LyX-Code
+           BP , BP , BP , BP , BP , BP , BP , BP,
+\end_layout
+
+\begin_layout LyX-Code
+           BR , BN , BB , BQ , BK , BB , BN , BR
+\end_layout
+
+\begin_layout LyX-Code
+          ] 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+initEnv :: Env
+\series default
+: El entorno inicial
+\end_layout
+
+\begin_layout LyX-Code
+initEnv = (White, initPos, 0, 0)
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Subsection
+Main 
+\end_layout
+
+\begin_layout Standard
+Main simplemente coordina las funciones del programa.
+ Las funciones principales son:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+presentacion :: IO ()
+\series default
+: Imprime un mensaje de inicio 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+config :: IO Color
+\series default
+: Da a elegir con qué color jugar
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+jugar :: Color -> IO ()
+\series default
+: Inicia el juego
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+humanMove :: Env -> IO Env
+\series default
+: Lee un movimiento del teclado y verifica si és válido
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+humano :: Color -> Env -> IO ()
+\series default
+: Realiza un movimiento dado por el jugador, verifica si el juego terminó
+ y llama al siguiente movimiento de la máquina
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+maquina :: Color -> Env -> IO ()
+\series default
+: Genera un movimiento de la máquina y si no se llegó al final del juego
+ llama al siguiente movimiento del adversario 
+\end_layout
+
+\begin_layout Subsection
+Movimientos
+\end_layout
+
+\begin_layout Standard
+Funciones vinculadas a la manipulación y actualización del tablero y entorno
+ después de cada jugada
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+toColor :: Char -> Color
+\series default
+: Transforma una caracter previamente analizado en un color
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+toPos :: String -> Pos
+\series default
+: Transforma una cadena previamente analizada en una posición del tablero
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+toMove :: String -> Move
+\series default
+: Transforma una cadena previamente analizada en un movimiento
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+getSquare :: Pos -> Board -> Square
+\series default
+: Dada una posición y un tablero devuelve el contenido de la casilla correspondi
+ente 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+setSquare :: Square -> Pos -> Board -> Board
+\series default
+: Coloca una pieza en una casilla de un tablero dado 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+delSquare :: Pos -> Board -> Board
+\series default
+: Setea en vacía una casilla dada de un tablero 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+updateBoard :: Move -> Board -> Board
+\series default
+: Actualiza el tablero, no analiza la validez de las jugadas
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+opPiece :: Square -> Square
+\series default
+: Dada una pieza blanca retorna la equivalente en el bando opuesto.
+ Esta función se usa sólo para coronación 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+color :: Square -> Color
+\series default
+: Nos da el color de la pieza en una casilla 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+opColor :: Color -> Color
+\series default
+: Dado un color, nos da el opuesto 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+move' :: Env -> Move -> Env
+\series default
+: Actualiza el tablero y el estado de los enroques.
+ También cambia el color del turno 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+move :: Env -> Move -> IO Env
+\series default
+: Encapsula lo que hace 
+\begin_inset Quotes eld
+\end_inset
+
+move'
+\begin_inset Quotes erd
+\end_inset
+
+ en la mónada IO
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+castleHandler :: Color -> Pos -> Int
+\series default
+: Funci¿ón auxiliar para manejar los enroques 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+updateCastle :: Int -> Int -> Int
+\series default
+: Actualiza el estado de los enroques.
+ Toma el handler del último movimiento generado por castleHandler, el estado
+ actual y devuelve el resultado 
+\end_layout
+
+\begin_layout Subsection
+Validacion
+\end_layout
+
+\begin_layout Standard
+Este módulo agrupa las funciones necesarias para verificar si un movimiento
+ parseado es válido.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+rightColor :: Color -> Square -> Bool
+\series default
+: Indica si el color de una pieza a mover coincide con el color del jugador
+ que mueve 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+possible :: Square -> Pos -> [[Pos]]
+\series default
+: possible nos da el conjunto de casillas a las que se puede mover una pieza
+ desde una casilla dada en el tablero vacío
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Posible genera las posiciones en base a la estructura que usamos para el
+ tablero.
+ Ver archivo 
+\begin_inset Quotes eld
+\end_inset
+
+Tablero.txt
+\begin_inset Quotes erd
+\end_inset
+
+ adjunto
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+oneRow :: Pos -> [Pos] -> Bool
+\series default
+: Verifica la validez de los movimientos de peón 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+isPossible :: [[Pos]] -> Pos -> Bool
+\series default
+: Permite verificar que una pieza puede moverse a una casilla en un tablero
+ vacío 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+findKing :: Color -> Board -> Pos
+\series default
+: Da la posición del rey de un jugador 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+check :: Color -> Env -> Bool
+\series default
+: Dice si el jugador dado está en jaque 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+hayRey :: Color -> Board -> Bool
+\series default
+: Verifica que no se haya tomado el rey 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+aux :: Color -> [[Square]] -> [[Square]] -> Bool
+\series default
+: Función auxiliar para verificar que un jugador está en jaque 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+firstRorQ, firstBorQ , pawn :: Color -> [Square] -> Bool
+\series default
+:
+\series bold
+ 
+\series default
+Son otras funciones auxiliares para verificar jaque
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+inCheck :: Move -> Env -> Bool
+\series default
+: Toma el movimiento del jugador que movió y verifica que no se coloque
+ a si mismo en jaque 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+freeWay :: Pos -> [[Pos]] -> Board -> Bool
+\series default
+: Verifica que una pieza no salte sobre otras en una jugada 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+isValid :: Env -> Move -> Bool
+\series default
+: Evalúa la validez de un movimiento 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+notKing :: Square -> Bool
+\series default
+: Función auxiliar, verifica que no se intente tomar el rey rival 
+\end_layout
+
+\begin_layout Subsection
+Máquina
+\end_layout
+
+\begin_layout Standard
+Agrupa funciones correspondientes a la gneración de los movimientos de la
+ computadora.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+checkMate :: Env -> Bool
+\series default
+: Verifica si terminó el juego en jaque mate 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+staleMate :: Env -> Bool
+\series default
+: Verifica si terminó el juego en ahogado (tablas) 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+value :: Square -> Int
+\series default
+: Otorga un valor a cada pieza 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+eval :: Board -> Int
+\series default
+: Le da un puntaje a un tablero dado 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+mate, material, center, others, develop :: Board -> Int
+\series default
+: Son funciones que asignan valores al tablero según diversos aspectos
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+machineMove :: Env -> IO Env
+\series default
+: Genera el siguiente movimiento de la máquina 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+moveGen :: Int -> Board -> Env -> [Move] 
+\series default
+: Genera todos los movimientos habilitados en el turno actual 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+moveList :: Env -> [(Move,Int)]
+\series default
+: Genera una lista con todos los movimientos habilitados en el turno actual
+ y el valor del tablero tras realizar cada movimiento 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+pieceGen :: Square -> Pos -> Env -> [Move]
+\series default
+: Genera todos los movimientos habilitados de una pieza en el turno actual
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+moveTree :: Int -> Env -> [GenTree (Move,Int)]
+\series default
+: Crea un árbol con todos los movimientos y respuestas a partir de un estado
+ y la puntuación de cada movimiento hasta una profundidad dada 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+depth :: Int
+\series default
+: Profundidad del árbol de generación de jugadas
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+selectMove :: Env -> [GenTree (Move,Int)] -> (Move,Int)
+\series default
+: Selecciona un movimiento entre los mejores posibles que se han generado
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+nextMove :: Color -> [GenTree (Move,Int)] -> [(Move,Int)]
+\series default
+: Genera la lista de los mejores movimientos habilitados 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+minimax :: Color -> GenTree (Move,Int) -> (Move,Int)
+\series default
+: Teniendo un subárbol de respuestas aplica el algoritmo minimax y calcula
+ el mejor valor del movimiento raíz considerando las mejores respuestas
+ del adversario 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+best :: Color -> (Move,Int) -> [(Move,Int)] -> [(Move,Int)]
+\series default
+: Obtiene la lista de los mejores movimientos 
+\end_layout
+
+\begin_layout Subsection
+Parser
+\end_layout
+
+\begin_layout Standard
+Se definen los parsers usados para analizar la entrada tomada del teclado.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+readMove :: Parser String
+\series default
+: Analiza si la entrada es un movimiento 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+side :: Parser Char
+\series default
+: Analiza si la entrada es una opción válida 
+\end_layout
+
+\begin_layout Section
+Relfexiones: si lo empezara hoy...
+ 
+\end_layout
+
+\begin_layout Standard
+Esta sección es una reflexión sobre el diseño y resultado.
+ 
+\end_layout
+
+\begin_layout Standard
+Cosas que haría distinto de tener que hacer el proyecto de nuevo.
+\end_layout
+
+\begin_layout Standard
+Usaría menos patern matching y crearía una abstracción sobre mis estructuras
+ de datos.
+ 
+\end_layout
+
+\begin_layout Standard
+Creo que ese fue mi error fundamental, después de medir rendimiento con
+ profiling comprobé que gran parte del tiempo se pierde por el rendimiento
+ de las estructuras que elegí (tiempo de acceso en listas por ejemplo) y
+ cambiar esta estructura lleva a cambiar casi todo el código.
+ Más importante aún considero el error de no hacer este tipo de abstracción
+ con el entorno que llevan algunas funciones del programa.
+ Agregar ahora campos al entorno también lleva hacer grandes cambios.
+ Creo preferible crear funciones que me den acceso a las partes del entorno
+ en lugar de usar el pattern matching para esa labor.
+\end_layout
+
+\begin_layout Section
+Instrucciones de Compilación
+\end_layout
+
+\begin_layout Standard
+Simplemente sitúese en la carpeta FChess y ejecute
+\end_layout
+
+\begin_layout LyX-Code
+ghc -O2 --make Main.hs -o FChess;rm *.o;rm *.hi
+\end_layout
+
+\begin_layout Standard
+Ejecute el programa con
+\end_layout
+
+\begin_layout LyX-Code
+./FChess
+\end_layout
+
+\end_body
+\end_document
